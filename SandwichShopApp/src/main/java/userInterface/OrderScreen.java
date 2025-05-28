@@ -1,6 +1,9 @@
 package userInterface;
 
+import enums.BreadType;
+import enums.SandwichSize;
 import models.Order;
+import models.Sandwich;
 
 import java.util.Scanner;
 
@@ -34,29 +37,26 @@ public class OrderScreen {
     }
 
     private void addSandwich() {
-        // TODO: Walk user through sandwich building
-        System.out.println("Adding sandwich...");
+        System.out.println();
     }
 
     private void addDrink() {
-        // TODO: Let user choose size and flavor
-        System.out.println("Adding drink...");
+
     }
 
     private void addChips() {
-        // TODO: Let user choose chip flavor
-        System.out.println("Adding chips...");
+
     }
 
     private void checkout() {
         System.out.println("\n-- Checkout --");
         System.out.println(order.getOrderDetails());
 
-        System.out.print("Confirm order? (y/n): ");
+        System.out.print("Confirm order? (Yes/No): ");
         String confirm = scanner.nextLine();
 
-        if (confirm.equalsIgnoreCase("y")) {
-            // TODO: Save receipt
+        if (confirm.equalsIgnoreCase("Yes")) {
+            // Make method to save receipt
             System.out.println("Order confirmed. Receipt saved.");
         } else {
             System.out.println("Order cancelled.");

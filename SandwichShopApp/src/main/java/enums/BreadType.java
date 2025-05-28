@@ -1,5 +1,8 @@
 package enums;
 
 public enum BreadType {
-    WHITE, WHEAT, RYE, WRAP;
+    WHITE,
+    WHEAT,
+    RYE,
+    WRAP;
 }

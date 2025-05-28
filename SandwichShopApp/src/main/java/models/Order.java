@@ -10,6 +10,14 @@ public class Order {
         this.menuItems = new ArrayList<>();
     }
 
+    public void addItem(MenuItem menuItem) {
+        menuItems.add(menuItem);
+    }
+
+    public List<MenuItem> getItems() {
+        return menuItems;
+    }
+
     public double getBasePrice() {
         return menuItems.stream().mapToDouble(MenuItem::getPrice).sum();
     }
