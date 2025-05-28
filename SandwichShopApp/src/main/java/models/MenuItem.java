@@ -1,8 +1,8 @@
 package models;
 
 public abstract class MenuItem {
-    private String name;
-    private double basePrice;
+    protected String name;
+    protected double basePrice;
 
     public MenuItem(String name, double basePrice) {
         this.name = name;
