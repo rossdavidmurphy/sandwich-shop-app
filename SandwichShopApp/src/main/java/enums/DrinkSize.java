@@ -1,9 +1,9 @@
 package enums;
 
 public enum DrinkSize {
-    SMALL(1.50),
-    MEDIUM(2.00),
-    LARGE(2.50);
+    SMALL(2.00),
+    MEDIUM(2.50),
+    LARGE(3.00);
 
     private final double price;
 

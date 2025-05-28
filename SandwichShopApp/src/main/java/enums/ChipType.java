@@ -1,17 +1,15 @@
 package enums;
 
-public enum DrinkFlavor {
-    COKE_COLA("Coke-Cola"),
-    DR_PEPPER("Dr Pepper"),
-    ORANGE_FANTA("Orange Fanta"),
-    LEMONADE("Lemonade"),
-    COFFEE("Coffee"),
-    SWEET_TEA("Sweet Tea"),
-    WATER("Water");
+public enum ChipType {
+    TRADITIONAL("Traditional"),
+    RUFFLES("Ruffles"),
+    BBQ("Barbecue"),
+    SOUR_CREAM_ONION("Sour Cream & Onion"),
+    LIGHTLY_SALTED("Lightly Salted");
 
     private final String displayName;
 
-    DrinkFlavor(String displayName) {
+    ChipType(String displayName) {
         this.displayName = displayName;
     }
 
