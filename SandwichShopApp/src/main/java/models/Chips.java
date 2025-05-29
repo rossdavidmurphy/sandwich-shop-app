@@ -21,6 +21,6 @@ public class Chips extends MenuItem {
 
     @Override
     public String getDetails() {
-        return String.format("%s (%s) - $%.2f", type, getPrice());
+        return String.format("%s Chips - $%.2f", type, getPrice());
     }
 }

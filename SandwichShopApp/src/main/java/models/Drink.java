@@ -2,23 +2,30 @@ package models;
 
 import enums.DrinkType;
 import enums.DrinkSize;
+import enums.IceType;
 
 public class Drink extends MenuItem {
     private DrinkSize size;
-    private DrinkType type;
+    private DrinkType drinkType;
+    private IceType iceType;
 
-    public Drink(DrinkSize size, DrinkType flavor) {
-        super(size.toString() + " " + flavor.toString(), size.getPrice());
+    public Drink(DrinkSize size, DrinkType drinkType, IceType iceType) {
+        super(size.toString() + " " + drinkType.toString()+ " " +iceType.toString(), size.getPrice());
         this.size = size;
-        this.type = flavor;
+        this.drinkType = drinkType;
+        this.iceType = iceType;
     }
 
     public DrinkSize getSize() {
         return size;
     }
 
-    public DrinkType getType() {
-        return type;
+    public DrinkType getDrinkType() {
+        return drinkType;
+    }
+
+    public IceType getIceType() {
+        return iceType;
     }
 
     @Override
@@ -28,6 +35,6 @@ public class Drink extends MenuItem {
 
     @Override
     public String getDetails() {
-        return String.format("%s (%s) - $%.2f", type, size,getPrice());
+        return String.format("%s (%s) - $%.2f", drinkType, size,getPrice());
     }
 }
