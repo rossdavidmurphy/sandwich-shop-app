@@ -1,13 +1,12 @@
 package models;
 
-import enums.SandwichSize;
 import enums.ToppingType;
 
 public class Topping {
     private String name;
     private ToppingType type;
 
-    public Topping(String name, ToppingType type, boolean extra) {
+    public Topping(String name, ToppingType type) {
         this.name = name;
         this.type = type;
     }

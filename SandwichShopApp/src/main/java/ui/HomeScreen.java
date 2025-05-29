@@ -5,19 +5,19 @@ import java.util.Scanner;
 public class HomeScreen {
     private final Scanner input = new Scanner(System.in);
 
-    public void start() {
+    public void display() {
         while (true) {
             System.out.println("\n=== Welcome to The Sandwich Shop ===");
             System.out.println("1) Start New Order");
             System.out.println("0) Exit");
 
             System.out.print("Choose an option: ");
-            String input = input.nextLine();
+            String homeScreenMenuOption = input.nextLine();
 
-            switch (input) {
+            switch (homeScreenMenuOption) {
                 case "1" -> {
                     OrderScreen orderScreen = new OrderScreen();
-                    orderScreen.running();
+                    orderScreen.display();
                 }
                 case "0" -> {
                     System.out.println("Goodbye!");

@@ -4,6 +4,7 @@ import enums.*;
 import models.*;
 
 import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
@@ -12,7 +13,7 @@ public class OrderScreen {
     private final Scanner input = new Scanner(System.in);
     private final Order order = new Order();
 
-    public void running() {
+    public void display() {
         while (true) {
             System.out.println("\n-- Order Screen --");
             System.out.println("1) Add Sandwich");
@@ -21,9 +22,9 @@ public class OrderScreen {
             System.out.println("4) Checkout");
             System.out.println("0) Cancel Order");
 
-            String input = this.input.nextLine();
+            String choice = this.input.nextLine();
 
-            switch (input) {
+            switch (choice) {
                 case "1" -> addSandwich();
                 case "2" -> addDrink();
                 case "3" -> addChips();
@@ -36,9 +37,8 @@ public class OrderScreen {
             }
         }
     }
-
-    private void addSandwich() {
-        System.out.println("What size sandwich would you like?");
+        private void addSandwich() {
+            System.out.println("What size sandwich would you like?");
             SandwichSize[] sizes = SandwichSize.values();
             for (int i = 0; i < sizes.length; i++) {
                 System.out.printf("%d) %s%n", i + 1, sizes[i]);
@@ -68,16 +68,16 @@ public class OrderScreen {
                 }
                 System.out.println("0) Done adding toppings");
 
-                String input = input.nextLine();
-                if (input.equals("0")) break;
+                String choice = input.nextLine();
+                if (choice.equals("0")) break;
 
                 try {
-                    int toppingChoice = Integer.parseInt(input);
+                    int toppingChoice = Integer.parseInt(choice);
                     ToppingType selectedType = toppingTypes[toppingChoice - 1];
 
                     System.out.print("Enter name of the topping (e.g., Ham, Swiss, Mayo): ");
                     String toppingName = input.nextLine();
-                    sandwich.addTopping(new Topping(toppingName, selectedType));
+                    sandwich.addTopping(new Topping(toppingName, selectedType)); // Why am I putting true/false? If I understand this code correctly, it doesn't know if it's an extra topping.
 
                 } catch (Exception e) {
                     System.out.println("Invalid input. Please try again.");
@@ -87,7 +87,6 @@ public class OrderScreen {
             order.addItem(sandwich);
             System.out.println("Your sandwich has been added to your order.");
         }
-    }
 
     private void addDrink() {
         System.out.println("What size drink would you like?");
@@ -114,7 +113,7 @@ public class OrderScreen {
         int iceChoice = Integer.parseInt(input.nextLine());
         IceType iceType = iceTypes[iceChoice - 1];
 
-        Drink drink = new Drink(drinkType.toString(), size.getPrice(), size, drinkType, iceType);
+        Drink drink = new Drink(size, drinkType, iceType);
         order.addItem(drink);
 
         System.out.println("Your drink has been added to your order.");
@@ -137,13 +136,15 @@ public class OrderScreen {
             System.out.println("Your chips have been added to your order.");
         } catch (Exception e) {
             System.out.println("Invalid input. Please try again.");
+        }
     }
 
-        private void saveReceipt() {
+    private void saveReceipt() {
+        try {
             DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss");
             String dateTime = LocalDateTime.now().format(dateTimeFormatter);
 
-//            String receiptName = "receipts/" + dateTime + ".txt";
+            String receiptName = "receipts/" + dateTime + ".txt";
 
             FileWriter fileWriter = new FileWriter(receiptName);
             fileWriter.write(order.getOrderDetails());
@@ -152,6 +153,7 @@ public class OrderScreen {
         } catch (IOException e) {
             System.out.println("Error: Receipt not saved. ");
         }
+    }
 
     private void checkout() {
         System.out.println("\n-- Checkout --");
@@ -166,6 +168,9 @@ public class OrderScreen {
         } else {
             System.out.println("Order cancelled.");
         }
+
+        HomeScreen homeScreen = new HomeScreen();
+        homeScreen.display();
 
         System.out.println("Returning to home screen.");
     }
