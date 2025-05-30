@@ -1,8 +1,8 @@
-package models;
+package com.pluralsight.models;
 
-import enums.DrinkType;
-import enums.DrinkSize;
-import enums.IceType;
+import com.pluralsight.enums.DrinkType;
+import com.pluralsight.enums.DrinkSize;
+import com.pluralsight.enums.IceType;
 
 public class Drink extends MenuItem {
     private DrinkSize size;

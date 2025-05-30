@@ -1,7 +1,7 @@
-package ui;
+package com.pluralsight.ui;
 
-import enums.*;
-import models.*;
+import com.pluralsight.enums.*;
+import com.pluralsight.models.*;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -68,19 +68,61 @@ public class OrderScreen {
                 }
                 System.out.println("0) Done adding toppings");
 
-                String choice = input.nextLine();
-                if (choice.equals("0")) break;
+                int choice = Integer.parseInt(input.nextLine());
+                if (choice == 0) break;
 
                 try {
-                    int toppingChoice = Integer.parseInt(choice);
-                    ToppingType selectedType = toppingTypes[toppingChoice - 1];
+                    ToppingType toppingType = toppingTypes[choice - 1];
 
-                    System.out.print("Enter name of the topping (e.g., Ham, Swiss, Mayo): ");
-                    String toppingName = input.nextLine();
-                    sandwich.addTopping(new Topping(toppingName, selectedType)); // Why am I putting true/false? If I understand this code correctly, it doesn't know if it's an extra topping.
+                    switch (toppingType) {
+                        case MEAT -> {
+                            MeatType[] meats = MeatType.values();
+                            for (int i = 0; i < meats.length; i++) {
+                                System.out.printf("%d) %s%n", i + 1, meats[i]);
+                            }
+                            System.out.print("Choose a meat: ");
+                            int meatChoice = Integer.parseInt(input.nextLine());
+                            String meatName = meats[meatChoice - 1].toString();
+                            sandwich.addTopping(new Topping(meatName, ToppingType.MEAT));
+                        }
+
+                        case CHEESE -> {
+                            CheeseType[] cheeses = CheeseType.values();
+                            for (int i = 0; i < cheeses.length; i++) {
+                                System.out.printf("%d) %s%n", i + 1, cheeses[i]);
+                            }
+                            System.out.print("Choose a cheese: ");
+                            int cheeseChoice = Integer.parseInt(input.nextLine());
+                            String cheeseName = cheeses[cheeseChoice - 1].toString();
+                            sandwich.addTopping(new Topping(cheeseName, ToppingType.CHEESE));
+                        }
+
+                        case SAUCE -> {
+                            SauceType[] sauces = SauceType.values();
+                            for (int i = 0; i < sauces.length; i++) {
+                                System.out.printf("%d) %s%n", i + 1, sauces[i]);
+                            }
+                            System.out.print("Choose a sauce: ");
+                            int sauceChoice = Integer.parseInt(input.nextLine());
+                            String sauceName = sauces[sauceChoice - 1].toString();
+                            sandwich.addTopping(new Topping(sauceName, ToppingType.SAUCE));
+                        }
+
+                        case REGULAR -> {
+                            RegularType[] regulars = RegularType.values();
+                            for (int i = 0; i < regulars.length; i++) {
+                                System.out.printf("%d) %s%n", i + 1, regulars[i]);
+                            }
+                            System.out.print("Choose a topping: ");
+                            int regularChoice = Integer.parseInt(input.nextLine());
+                            String regularName = regulars[regularChoice - 1].toString();
+                            sandwich.addTopping(new Topping(regularName, ToppingType.REGULAR));
+                        }
+                    }
 
                 } catch (Exception e) {
                     System.out.println("Invalid input. Please try again.");
+                    input.nextLine();
                 }
             }
 
@@ -142,11 +184,11 @@ public class OrderScreen {
     private void saveReceipt() {
         try {
             DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss");
-            String dateTime = LocalDateTime.now().format(dateTimeFormatter);
+            String receiptName = LocalDateTime.now().format(dateTimeFormatter);
 
-            String receiptName = "receipts/" + dateTime + ".txt";
+            String filePath = "receipts/" + receiptName + ".txt";
 
-            FileWriter fileWriter = new FileWriter(receiptName);
+            FileWriter fileWriter = new FileWriter(filePath);
             fileWriter.write(order.getOrderDetails());
             fileWriter.close();
 
@@ -171,7 +213,5 @@ public class OrderScreen {
 
         HomeScreen homeScreen = new HomeScreen();
         homeScreen.display();
-
-        System.out.println("Returning to home screen.");
     }
 }

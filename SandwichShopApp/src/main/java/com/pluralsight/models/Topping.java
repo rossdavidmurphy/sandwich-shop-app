@@ -1,6 +1,6 @@
-package models;
+package com.pluralsight.models;
 
-import enums.ToppingType;
+import com.pluralsight.enums.ToppingType;
 
 public class Topping {
     private String name;

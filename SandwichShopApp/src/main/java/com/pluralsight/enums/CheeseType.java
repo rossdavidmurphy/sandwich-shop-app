@@ -1,10 +1,10 @@
-package enums;
+package com.pluralsight.enums;
 
-public enum ToppingType {
-    MEAT,
-    CHEESE,
-    SAUCE,
-    REGULAR;
+public enum CheeseType {
+    AMERICAN,
+    PROVOLONE,
+    CHEDDAR,
+    SWISS;
 
     @Override
     public String toString() {

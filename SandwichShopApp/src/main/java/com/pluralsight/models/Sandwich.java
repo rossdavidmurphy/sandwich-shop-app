@@ -1,8 +1,8 @@
-package models;
+package com.pluralsight.models;
 
-import enums.BreadType;
-import enums.SandwichSize;
-import enums.ToppingType;
+import com.pluralsight.enums.BreadType;
+import com.pluralsight.enums.SandwichSize;
+import com.pluralsight.enums.ToppingType;
 
 import java.util.ArrayList;
 import java.util.List;

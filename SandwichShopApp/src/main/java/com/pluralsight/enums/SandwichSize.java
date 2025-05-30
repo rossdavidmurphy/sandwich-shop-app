@@ -1,4 +1,4 @@
-package enums;
+package com.pluralsight.enums;
 
 public enum SandwichSize {
     FOUR_INCH(4),

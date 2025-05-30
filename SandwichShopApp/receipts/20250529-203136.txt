@@ -1,0 +1,7 @@
+12" Sandwich on WHITE_BREAD (Toasted)
+  Toppings: Bacon, AMERICAN, Steak, MAYO, MUSTARD, KETCHUP, LETTUCE, TOMATOES, PICKLES - $15.25
+Water (Medium) - $2.50
+Lightly Salted Chips - $1.50
+Subtotal: $19.25
+Tax: $1.40
+Total: $20.65

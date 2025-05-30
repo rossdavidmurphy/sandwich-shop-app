@@ -1,6 +1,6 @@
-package program;
+package com.pluralsight;
 
-import ui.HomeScreen;
+import com.pluralsight.ui.HomeScreen;
 
 public class Main {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package ui;
+package com.pluralsight.ui;
 
 import java.util.Scanner;
 
@@ -21,7 +21,7 @@ public class HomeScreen {
                 }
                 case "0" -> {
                     System.out.println("Goodbye!");
-                    return;
+                    System.exit(0);
                 }
                 default -> System.out.println("Invalid choice. Please try again.");
             }

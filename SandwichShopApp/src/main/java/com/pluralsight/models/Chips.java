@@ -1,6 +1,6 @@
-package models;
+package com.pluralsight.models;
 
-import enums.ChipType;
+import com.pluralsight.enums.ChipType;
 
 public class Chips extends MenuItem {
     private ChipType type;
